@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제품 | 하루제주 HARU JEJU</title>
+<meta name="description" content="하루제주의 모든 제품 - 양배추즙, 도라지배즙, 양배추환, 여주환, 쌍화차 등 제주 유기농 건강식품 라인업">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f5ecd9' stroke='%23b48a4a' stroke-width='3'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-size='40' font-family='serif' fill='%235e3d24' font-weight='bold'%3E하%3C/text%3E%3C/svg%3E">
+<style>
+  .page-hero {
+    padding: 9rem 0 3rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-paper-light), var(--color-paper));
+  }
+  .page-hero h1 {
+    font-family: var(--font-hand);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    color: var(--color-brown-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .page-hero .breadcrumb {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .page-hero p {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--color-ink-light);
+    max-width: 32em;
+    margin: 0 auto;
+  }
+
+  .filter-bar {
+    background: var(--color-paper-light);
+    border-top: 1px solid var(--color-paper-dark);
+    border-bottom: 1px solid var(--color-paper-dark);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 80px;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+  }
+  .filter-bar .filter-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .sort-select {
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-paper-dark);
+    background: var(--color-paper-light);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+
+  .product-section {
+    padding: 4rem 0 6rem;
+  }
+
+  .featured-banner {
+    background:
+      linear-gradient(135deg, rgba(180, 138, 74, 0.08), rgba(107, 142, 78, 0.06));
+    border: 1px solid var(--color-paper-dark);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .featured-banner h3 {
+    font-family: var(--font-hand);
+    font-size: 2rem;
+    color: var(--color-brown-dark);
+    margin-bottom: 0.7rem;
+  }
+  .featured-banner p {
+    color: var(--color-ink-light);
+    font-family: var(--font-serif);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .featured-banner .banner-image {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-md);
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 768px) {
+    .featured-banner { grid-template-columns: 1fr; padding: 1.5rem; }
+    .filter-bar { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="brand-logo">
+      <span class="logo-mark">하루<br>제주</span>
+      <span class="logo-text">
+        <span class="ko">하루제주</span>
+        <span class="en">HARU JEJU</span>
+      </span>
+    </a>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+        <li><a href="about.html" data-i18n="nav.about">브랜드 스토리</a></li>
+        <li><a href="products.html" data-i18n="nav.products">제품</a></li>
+        <li><a href="order.html" data-i18n="nav.order">주문·문의</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="ko">KO</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener" class="btn-cart" aria-label="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Page Hero ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb fade-in" data-i18n="productspage.breadcrumb">HOME / PRODUCTS</div>
+    <h1 class="fade-in delay-1" data-i18n="productspage.title">제주의 자연을 그대로</h1>
+    <p class="fade-in delay-2" data-i18n="productspage.subtitle">제주 화산토에서 자란 건강한 원료로 만든 정성 가득한 제품들</p>
+  </div>
+</section>
+
+<!-- ===== Filter Bar ===== -->
+<div class="filter-bar">
+  <div class="container filter-inner">
+    <div class="product-tabs" style="margin-bottom:0;">
+      <button class="tab-btn active" data-category="all" data-i18n="products.tab.all">전체</button>
+      <button class="tab-btn" data-category="juice" data-i18n="products.tab.juice">즙·주스</button>
+      <button class="tab-btn" data-category="pill" data-i18n="products.tab.pill">환(丸)</button>
+      <button class="tab-btn" data-category="tea" data-i18n="products.tab.tea">차·선물세트</button>
+      <button class="tab-btn" data-category="meal" data-i18n="products.tab.meal">선식</button>
+    </div>
+    <select class="sort-select">
+      <option>인기순</option>
+      <option>최신순</option>
+      <option>낮은 가격순</option>
+      <option>높은 가격순</option>
+      <option>리뷰 많은 순</option>
+    </select>
+  </div>
+</div>
+
+<!-- ===== Products ===== -->
+<section class="product-section">
+  <div class="container">
+
+    <!-- Featured Banner -->
+    <div class="featured-banner reveal">
+      <div>
+        <span class="label" style="display:inline-block; color:var(--color-gold); font-size:0.85rem; letter-spacing:0.3em; margin-bottom:1rem; font-family:var(--font-serif);">SIGNATURE</span>
+        <h3>제주 별빛을 먹고 자란 양배추</h3>
+        <p>
+          물 한 방울 들어가지 않은 100% 양배추즙.
+          NFC 저온착즙 방식으로 영양소 손실 없이
+          제주의 자연을 그대로 담았습니다.
+        </p>
+        <a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener" class="btn btn-naver" style="font-size:0.95rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845z"/></svg>
+          스마트스토어에서 구매
+        </a>
+      </div>
+      <div class="banner-image" style="background-image: url('../images/pouring-cabbage.jpg'), linear-gradient(135deg, #6b8e4e, #c8e0a8);"></div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+
+      <article class="product-card reveal" data-category="juice"
+        data-smartstore-url="https://smartstore.naver.com/mandukfood">
+        <div class="card-image" style="background-image: url('../images/product-cabbage-juice.jpg'), linear-gradient(135deg, #6b8e4e, #a3b87a);">
+          <span class="product-badge best">BEST</span>
+        </div>
+        <div class="product-info">
+          <div class="product-category">JUICE · 80ml × 30</div>
+          <h3 class="product-name">하루제주 고깔 양배추즙 NFC 저온착즙 100%</h3>
+          <div class="product-meta">
+            <span class="star">★</span> 4.93
+            <span class="reviews">· 1,923개 리뷰</span>
+          </div>
+          <div class="product-price">
+            <span class="discount">82%</span>
+            <span class="original">110,000원</span>
+            <span class="current">18,900원</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" data-category="juice"
+        data-smartstore-url="https://smartstore.naver.com/mandukfood">
+        <div class="card-image" style="background-image: url('../images/product-doraji.jpg'), linear-gradient(135deg, #b48a4a, #d4c8a8);">
+          <span class="product-badge organic">ORGANIC</span>
+        </div>
+        <div class="product-info">
+          <div class="product-category">JUICE · 100ml × 25 · 어린이용</div>
+          <h3 class="product-name">하루제주 약백도라지배즙 무 NFC저온착즙 100%</h3>
+          <div class="product-meta">
+            <span class="star">★</span> 4.97
+            <span class="reviews">· 145개 리뷰</span>
+          </div>
+          <div class="product-price">
+            <span class="discount">45%</span>
+            <span class="original">51,000원</span>
+            <span class="current">27,900원</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" data-category="pill"
+        data-smartstore-url="https://smartstore.naver.com/mandukfood">
+        <div class="card-image" style="background-image: url('../images/product-cabbage-pill.jpg'), linear-gradient(135deg, #c8e0a8, #6b8e4e);">
+          <span class="product-badge organic">유기농</span>
+        </div>
+        <div class="product-info">
+          <div class="product-category">PILL · 2g × 20+20포</div>
+          <h3 class="product-name">하루제주 국산 유기농 무농약 양배추환 여주환 스틱 20포+20포</h3>
+          <div class="product-meta">
+            <span class="star">★</span> 4.95
+            <span class="reviews">· 242개 리뷰</span>
+          </div>
+          <div class="product-price">
+            <span class="discount">53%</span>
+            <span class="original">30,000원</span>
+            <span class="current">13,900원</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" data-category="pill"
+        data-smartstore-url="https://smartstore.naver.com/mandukfood">
+        <div class="card-image" style="background-image: url('../images/product-cabbage-pill-40.jpg'), linear-gradient(135deg, #b8d49a, #4a6b35);">
+          <span class="product-badge">재구매 BEST</span>
+        </div>
+        <div class="product-info">
+          <div class="product-category">PILL · Cabbage · 40 스틱</div>
+          <h3 class="product-name">하루제주 국내산 무농약 양배추환 유기농 여주환 스틱 40포</h3>
+          <div class="product-meta">
+            <span class="star">★</span> 4.82
+            <span class="reviews">· 396개 리뷰</span>
+          </div>
+          <div class="product-price">
+            <span class="discount">70%</span>
+            <span class="original">46,350원</span>
+            <span class="current">13,900원</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" data-category="pill"
+        data-smartstore-url="https://smartstore.naver.com/mandukfood">
+        <div class="card-image" style="background-image: url('../images/product-bittermelon.jpg'), linear-gradient(135deg, #e0d8e8, #a89bbf);">
+          <span class="product-badge organic">유기농</span>
+        </div>
+        <div class="product-info">
+          <div class="product-category">PILL · Bitter Melon 40 스틱</div>
+          <h3 class="product-name">하루제주 국내산 유기농 여주환 무농약 양배추환 스틱 40포</h3>
+          <div class="product-meta">
+            <span class="star">★</span> 4.80
+            <span class="reviews">· 153개 리뷰</span>
+          </div>
+          <div class="product-price">
+            <span class="discount">65%</span>
+            <span class="original">48,500원</span>
+            <span class="current">16,900원</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" data-category="tea"
+        data-smartstore-url="https://smartstore.naver.com/mandukfood">
+        <div class="card-image" style="background-image: url('../images/product-ssanghwa.jpg'), linear-gradient(135deg, #8b5e3c, #d4c8a8);">
+          <span class="product-badge">PREMIUM</span>
+        </div>
+        <div class="product-info">
+          <div class="product-category">TEA · 100ml × 14 · 선물세트</div>
+          <h3 class="product-name">하루제주 국산 수제 쌍화차 선물세트 진액 전통 유자 한방차</h3>
+          <div class="product-meta">
+            <span class="star">★</span> 4.95
+            <span class="reviews">· 330개 리뷰</span>
+          </div>
+          <div class="product-price">
+            <span class="discount">45%</span>
+            <span class="original">51,000원</span>
+            <span class="current">27,900원</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" data-category="meal"
+        data-smartstore-url="https://smartstore.naver.com/mandukfood">
+        <div class="card-image" style="background-image: url('../images/product-misugaru.jpg'), linear-gradient(135deg, #d4c8a8, #b48a4a);">
+          <span class="product-badge">NEW</span>
+        </div>
+        <div class="product-info">
+          <div class="product-category">MEAL · 300g · 식사대용</div>
+          <h3 class="product-name">하루 제주 국산 옛날 미숫가루 보리개역 아침 식사대용 선식 300g</h3>
+          <div class="product-meta">
+            <span class="reviews">신상품 · 무료배송 X</span>
+          </div>
+          <div class="product-price">
+            <span class="current">5,500원</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- 하단 안내 -->
+    <div style="margin-top:5rem; padding:3rem; background:var(--color-paper-light); border-radius:var(--radius-lg); border:1px solid var(--color-paper-dark); text-align:center;">
+      <h3 style="font-family:var(--font-hand); font-size:2rem; color:var(--color-brown-dark); margin-bottom:1rem;">
+        주문은 네이버 스마트스토어에서
+      </h3>
+      <p style="color:var(--color-ink-light); margin-bottom:2rem; font-family:var(--font-serif); font-size:1.05rem;">
+        모든 제품은 안전하고 빠른 결제를 위해 네이버 스마트스토어를 통해 판매되고 있습니다.<br>
+        리뷰 확인, 정기구독, 선물하기 등 다양한 옵션을 이용해 보세요.
+      </p>
+      <a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener" class="btn btn-naver">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845z"/></svg>
+        스마트스토어로 이동
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand-logo">
+          <span class="logo-mark">하루<br>제주</span>
+          <span class="logo-text">
+            <span class="ko">하루제주</span>
+            <span class="en">HARU JEJU</span>
+          </span>
+        </a>
+        <p>제주 농가와 상생하는<br>건강한 한 끼, 만덕푸드</p>
+      </div>
+      <div class="footer-col">
+        <h4>회사 정보</h4>
+        <ul>
+          <li><a href="about.html">브랜드 스토리</a></li>
+          <li><a href="products.html">제품 소개</a></li>
+          <li><a href="order.html">주문·문의</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>고객 지원</h4>
+        <ul>
+          <li><a href="order.html#shipping">배송 안내</a></li>
+          <li><a href="order.html#exchange">교환·환불</a></li>
+          <li><a href="order.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>판매 채널</h4>
+        <ul>
+          <li><a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener">스마트스토어</a></li>
+          <li><a href="#">카카오톡 채널</a></li>
+          <li><a href="#">인스타그램</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>(주)만덕푸드 · 제주특별자치도 제주시 · 064-000-0000</div>
+      <div>© 2026 HARU JEJU. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-group">
+    <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="fab kakao">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.83 5.31 4.6 6.74-.13.46-.81 2.84-.85 3.06 0 0-.02.14.07.19s.2.01.2.01c.27-.04 3.13-2.04 3.62-2.39.78.12 1.59.2 2.36.2 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+  </a>
+  <a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener" class="fab naver">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845z"/></svg>
+  </a>
+  <button class="fab top">TOP</button>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
