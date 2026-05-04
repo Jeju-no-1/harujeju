@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드 스토리 | 하루제주 HARU JEJU</title>
+<meta name="description" content="조선 거상 김만덕의 정신을 이어 받은 만덕푸드. 할머니에서 엄마, 그리고 손녀로 이어지는 3대 레시피와 제주 농가와의 상생 이야기.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f5ecd9' stroke='%23b48a4a' stroke-width='3'/%3E%3Ctext x='50' y='62' text-anchor='middle' font-size='40' font-family='serif' fill='%235e3d24' font-weight='bold'%3E하%3C/text%3E%3C/svg%3E">
+<style>
+  /* About-page only */
+  .page-hero {
+    padding: 9rem 0 4rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-paper-light), var(--color-paper));
+  }
+  .page-hero h1 {
+    font-family: var(--font-hand);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--color-brown-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .page-hero .breadcrumb {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .page-hero p {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--color-ink-light);
+    max-width: 30em;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  .story-section {
+    padding: 5rem 0;
+  }
+  .story-section.alt { background: var(--color-paper-light); }
+
+  .story-block {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .story-block .quote {
+    font-family: var(--font-hand);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-brown-dark);
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .story-block .quote::before,
+  .story-block .quote::after {
+    content: '';
+    display: block;
+    width: 60px; height: 1px;
+    background: var(--color-gold);
+    margin: 1rem auto;
+  }
+
+  .story-block .quote .em { color: var(--color-accent); }
+
+  .story-block p {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 2.1;
+    color: var(--color-ink-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .story-block p strong {
+    color: var(--color-brown-dark);
+    font-weight: 700;
+  }
+
+  .story-block .image-wrap {
+    margin: 3rem 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 16/10;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* 3대 레시피 타임라인 */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 4rem 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 12%; right: 12%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+    z-index: 0;
+  }
+
+  .timeline-item {
+    text-align: center;
+    background: var(--color-paper-light);
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-paper-dark);
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-item .gen-circle {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: var(--color-paper);
+    border: 2.5px solid var(--color-gold);
+    margin: -3rem auto 1rem;
+    display: grid; place-items: center;
+    font-family: var(--font-hand);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-brown-dark);
+  }
+
+  .timeline-item h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-brown-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item .role {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-item p {
+    font-size: 0.95rem;
+    color: var(--color-ink-light);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* 김만덕 인용 */
+  .manduk-callout {
+    background:
+      linear-gradient(135deg, rgba(180, 138, 74, 0.08), rgba(180, 138, 74, 0.04));
+    border: 1px solid var(--color-paper-dark);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    text-align: center;
+    margin: 4rem auto;
+    max-width: 720px;
+    position: relative;
+  }
+  .manduk-callout::before {
+    content: '滿';
+    position: absolute;
+    top: -1rem; left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-paper);
+    width: 60px; height: 60px;
+    display: grid; place-items: center;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+  }
+  .manduk-callout .name {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--color-brown-dark);
+    margin: 1rem 0 0.5rem;
+    font-weight: 700;
+  }
+  .manduk-callout .epoch {
+    font-size: 0.85rem;
+    color: var(--color-gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .manduk-callout p {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--color-ink-light);
+    margin: 0;
+  }
+
+  /* 약속 섹션 */
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  .promise-card {
+    background: var(--color-paper-light);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-gold);
+  }
+  .promise-card .num {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    color: var(--color-gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+  .promise-card h4 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--color-brown-dark);
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+  }
+  .promise-card p {
+    font-size: 0.95rem;
+    color: var(--color-ink-light);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .timeline { grid-template-columns: 1fr; }
+    .timeline::before { display: none; }
+    .promise-grid { grid-template-columns: 1fr; }
+    .manduk-callout { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="brand-logo">
+      <span class="logo-mark">하루<br>제주</span>
+      <span class="logo-text">
+        <span class="ko">하루제주</span>
+        <span class="en">HARU JEJU</span>
+      </span>
+    </a>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="../index.html" data-i18n="nav.home">홈</a></li>
+        <li><a href="about.html" data-i18n="nav.about">브랜드 스토리</a></li>
+        <li><a href="products.html" data-i18n="nav.products">제품</a></li>
+        <li><a href="order.html" data-i18n="nav.order">주문·문의</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="ko">KO</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener" class="btn-cart" aria-label="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Page Hero ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb fade-in" data-i18n="about.breadcrumb">HOME / BRAND STORY</div>
+    <h1 class="fade-in delay-1" data-i18n="about.hero.title">우리는<br>느림의 미학을 따릅니다</h1>
+    <p class="fade-in delay-2" data-i18n="about.hero.subtitle">
+      느리지만, 천천히, 하나에 더욱 집중해서<br>
+      좋은 제품으로 여러분께 보답하겠습니다.
+    </p>
+  </div>
+</section>
+
+<!-- ===== 김만덕 정신 ===== -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-block">
+      <p class="quote reveal">
+        만덕푸드는,<br>조선의 거상 <span class="em">김만덕</span>님의<br>정신을 이어받습니다
+      </p>
+
+      <div class="manduk-callout reveal">
+        <div class="name">김만덕(金萬德)</div>
+        <div class="epoch">1739 ~ 1812 · 조선 후기 거상</div>
+        <p>
+          제주에서 태어난 여성 사회활동가이자 거상. 흉년이 들어 굶주리는
+          제주 백성을 구휼하기 위해 자신의 전 재산을 기부하여
+          나눔을 베풀었던 인물.<br>
+          그녀의 이름 <strong>滿德(만덕)</strong>은 <em>'베풂으로 가득하다'</em>는 뜻입니다.
+        </p>
+      </div>
+
+      <p>
+        안녕하세요. 하루제주를 운영하고 있는 <strong>만덕푸드</strong>입니다.
+      </p>
+      <p>
+        만덕푸드는 조선의 여성 사회활동가인 거상 김만덕님의 정신을 이어받아,
+        나눔을 베풀고 정직한 기업이 되겠다는 의지로 시작되었습니다.
+        <strong>滿德(만덕)</strong>, '베풂으로 가득하다'라는 뜻처럼
+        제주 농가와의 상생을 위해 노력하고 있습니다.
+      </p>
+
+      <div class="image-wrap reveal" style="background-image: url('../images/12.jpg'), linear-gradient(135deg, #6b8e4e, #d4e0a8); aspect-ratio: 4/3; background-position: center;"></div>
+
+      <p>
+        느리지만, 천천히, 하나에 더욱 집중을 해서
+        좋은 제품으로 여러분들께 보답하겠습니다.
+        이것이 하루제주가 따르는 <strong>'느림의 미학'</strong>입니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3대 레시피 ===== -->
+<section class="story-section alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">3 GENERATIONS</span>
+      <h2>할머니에서 엄마, 손녀로</h2>
+      <p>자식을 생각하던 할머니의 마음이 엄마를 거쳐<br>오늘 우리 식탁에 오릅니다.</p>
+    </div>
+
+    <div class="story-block">
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="gen-circle">1대</div>
+          <h3>할머니</h3>
+          <div class="role">GRANDMOTHER</div>
+          <p>
+            전통 방식을 고수하시던 할머니의 손맛.
+            동네 사람들에게 나눠드리던
+            건강 주스가 시작이었습니다.
+          </p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="gen-circle">2대</div>
+          <h3>엄마</h3>
+          <div class="role">MOTHER</div>
+          <p>
+            옛것의 고유한 특성은 지키면서,
+            현대시대의 좋은 재료를 어울리게
+            담아내는 노력의 시간.
+          </p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="gen-circle">3대</div>
+          <h3>손녀</h3>
+          <div class="role">DAUGHTER</div>
+          <p>
+            "제가 엄마가 되어보니 더 알겠더라고요."
+            내 새끼들이 먹는 음식이라 생각하며
+            정성스럽게 만듭니다.
+          </p>
+        </div>
+      </div>
+
+      <p style="text-align:center; font-family: var(--font-hand); font-size: 1.5rem; color: var(--color-brown-dark); margin: 3rem 0 1rem;">
+        수많은 시행착오, 하지만 포기하지 않았습니다.
+      </p>
+      <p style="text-align:center;">
+        전통방식을 고수하는 할머니의 레시피에 엄마를 거치면서 재료들도 바뀐 것은 사실입니다.
+        옛것이 가지고 있는 고유한 특성은 지키면서 현대시대의 좋은 재료를 어울리게
+        담아내는 것을 목표로 하였습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 우리의 약속 ===== -->
+<section class="story-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">OUR PROMISE</span>
+      <h2>가격과 타협하지 않습니다</h2>
+      <p>저희 모든 제품은 할머니의 고집처럼<br>전부 내 새끼들이 먹는 음식이라 생각하고 정성스럽게 만들어집니다.</p>
+    </div>
+
+    <div class="story-block">
+      <div class="promise-grid">
+        <div class="promise-card reveal">
+          <div class="num">PROMISE 01</div>
+          <h4>화학 첨가물 무첨가</h4>
+          <p>
+            화학 방부제, 인공 감미료, 합성 색소 등
+            건강을 해칠 수 있는 그 어떤 첨가물도 사용하지 않습니다.
+          </p>
+        </div>
+        <div class="promise-card reveal">
+          <div class="num">PROMISE 02</div>
+          <h4>국산 유기농 원료</h4>
+          <p>
+            제주 화산토에서 자란 무농약 유기농 원료를
+            농가와 직접 계약 재배하여 사용합니다.
+          </p>
+        </div>
+        <div class="promise-card reveal">
+          <div class="num">PROMISE 03</div>
+          <h4>NFC 저온 착즙</h4>
+          <p>
+            물 한 방울 들어가지 않은 100% 원물 그대로,
+            영양소 파괴를 최소화한 저온 착즙 방식.
+          </p>
+        </div>
+        <div class="promise-card reveal">
+          <div class="num">PROMISE 04</div>
+          <h4>제주 농가 상생</h4>
+          <p>
+            농가와의 직거래로 신선한 원료를 공급받고,
+            정당한 수익을 농가와 나눕니다.
+          </p>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin-top:3rem;">
+        사실 가격 부담이 가장 컸어요. 더욱 저렴하게도 만들 수 있었어요.
+        농축액이나 화학감미료를 넣은 제품보다는 가격이 비싼 것은 사실이니까요.
+      </p>
+      <p style="text-align:center; font-family: var(--font-hand); font-size: 1.8rem; color: var(--color-accent); margin-top: 2rem;">
+        하지만, 저희는 가격과 타협하지 않았습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section-cta">
+  <div class="container">
+    <div class="cta-content reveal">
+      <h2>제주의 정성이 담긴<br>한 잔을 만나보세요</h2>
+      <p>할머니의 마음으로, 자식에게 주는 정성으로 만들어진 하루제주의 제품들.<br>
+        오늘, 그 진심의 차이를 느껴보세요.</p>
+      <a href="products.html" class="btn btn-naver">
+        제품 둘러보기
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer (간략) ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand-logo">
+          <span class="logo-mark">하루<br>제주</span>
+          <span class="logo-text">
+            <span class="ko">하루제주</span>
+            <span class="en">HARU JEJU</span>
+          </span>
+        </a>
+        <p>제주 농가와 상생하는<br>건강한 한 끼, 만덕푸드</p>
+      </div>
+      <div class="footer-col">
+        <h4>회사 정보</h4>
+        <ul>
+          <li><a href="about.html">브랜드 스토리</a></li>
+          <li><a href="products.html">제품 소개</a></li>
+          <li><a href="order.html">주문·문의</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>고객 지원</h4>
+        <ul>
+          <li><a href="order.html#shipping">배송 안내</a></li>
+          <li><a href="order.html#exchange">교환·환불</a></li>
+          <li><a href="order.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>판매 채널</h4>
+        <ul>
+          <li><a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener">스마트스토어</a></li>
+          <li><a href="#">카카오톡 채널</a></li>
+          <li><a href="#">인스타그램</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>(주)만덕푸드 · 제주특별자치도 제주시 · 064-000-0000</div>
+      <div>© 2026 HARU JEJU. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-group">
+    <a href="https://pf.kakao.com/" target="_blank" rel="noopener" class="fab kakao">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.83 5.31 4.6 6.74-.13.46-.81 2.84-.85 3.06 0 0-.02.14.07.19s.2.01.2.01c.27-.04 3.13-2.04 3.62-2.39.78.12 1.59.2 2.36.2 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+  </a>
+  <a href="https://smartstore.naver.com/mandukfood" target="_blank" rel="noopener" class="fab naver">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845z"/></svg>
+  </a>
+  <button class="fab top">TOP</button>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
